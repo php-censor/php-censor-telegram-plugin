@@ -1,0 +1,30 @@
+{
+    "name": "lexasoft/php-censor-telegram-plugin",
+    "description": "PHP Censor plugin for Telegram",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "LEXASOFT",
+            "email": "lexasoft83@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+          "PHPCensor\\Plugin\\": "src"
+        }
+    },
+    "extra": {
+        "phpci": {
+            "pluginNamespace": "PHPCensor\\Plugin\\",
+            "suppliedPlugins": [
+                {
+                    "name": "Telegram",
+                    "class": "Telegram"
+                }
+            ]
+        }
+    }
+}
