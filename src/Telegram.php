@@ -1,11 +1,4 @@
 <?php
-/**
- * PHPCI - Continuous Integration for PHP
- *
- * @copyright Copyright 2014, Block 8 Limited.
- * @license   https://github.com/Block8/PHPCI/blob/master/LICENSE.md
- * @link      https://www.phptesting.org/
- */
 
 namespace PHPCensor\Plugin;
 
@@ -15,6 +8,7 @@ use b8\HttpClient;
 
 /**
  * Telegram Plugin
+ * 
  * @author     LEXASOFT <lexasoft83@gmail.com>
  * @package    PHPCensor
  * @subpackage Plugins
@@ -121,9 +115,9 @@ class Telegram extends \PHPCensor\Plugin
         $buildIcon = $this->build->isSuccessful() ? '✅' : '❎';
         $buildLog = $this->build->getLog();
         $buildLog = str_replace(['[0;32m', '[0;31m', '[0m', '/[0m'], '', $buildLog);
-        $buildmessages = explode('RUNNING PLUGIN: ', $buildLog);
+        $buildMessages = explode('RUNNING PLUGIN: ', $buildLog);
 
-        foreach ($buildmessages as $bm) {
+        foreach ($buildMessages as $bm) {
             $pos = mb_strpos($bm, "\n");
             $firstRow = mb_substr($bm, 0, $pos);
 
