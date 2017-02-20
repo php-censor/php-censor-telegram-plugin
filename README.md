@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a58c62e4bde1485f95b52fa56a2e4320)](https://www.codacy.com/app/LEXASOFT/PHP-Censor-Telegram-Plugin)
 # PHP-Censor-Telegram-Plugin
-Telegram plugin for PHP Censor
+Telegram plugin for [PHP Censor](https://github.com/corpsee/php-censor)
 # Installation
 First of all - `composer require lexasoft/php-censor-telegram-plugin`
 
@@ -12,7 +12,7 @@ In the PHP Censor Project config section add the Telegram trigger
 complete:
     telegram:
         api_key: "<YOUR_BOT_TOKEN_HERE>"
-        message: [%ICON_BUILD%] [%PROJECT_TITLE%](%PROJECT_URI%) - [Build #%BUILD%](%BUILD_URI%) has finished for commit [%SHORT_COMMIT% (%COMMIT_EMAIL%)](%COMMIT_URI%) on branch [%BRANCH%](%BRANCH_URI%)
+        message: "[%ICON_BUILD%] [%PROJECT_TITLE%](%PROJECT_URI%) - [Build #%BUILD%](%BUILD_URI%) has finished for commit [%SHORT_COMMIT% (%COMMIT_EMAIL%)](%COMMIT_URI%) on branch [%BRANCH%](%BRANCH_URI%)"
         recipients:
             - <user id>
             - "-<group id>"
