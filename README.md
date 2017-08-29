@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a58c62e4bde1485f95b52fa56a2e4320)](https://www.codacy.com/app/LEXASOFT/PHP-Censor-Telegram-Plugin)
 # PHP-Censor-Telegram-Plugin
-Telegram plugin for [PHP Censor](https://github.com/corpsee/php-censor)
+Telegram plugin for [PHP Censor](https://github.com/php-censor/php-censor)
 # Installation
 First of all - `composer require lexasoft/php-censor-telegram-plugin`
 

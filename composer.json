@@ -1,13 +1,30 @@
 {
     "name": "lexasoft/php-censor-telegram-plugin",
     "description": "PHP Censor plugin for Telegram",
+    "minimum-stability": "stable",
+    "type": "php-censor-plugin",
+    "keywords": [
+        "php",
+        "php-censor",
+        "testing",
+        "open-source",
+        "ci",
+        "continuous integration",
+        "telegram"
+    ],
+    "homepage": "https://github.com/LEXASOFT/PHP-Censor-Telegram-Plugin",
     "license": "GPL-3.0",
     "authors": [
         {
             "name": "LEXASOFT",
-            "email": "lexasoft83@gmail.com"
+            "email": "lexasoft83@gmail.com",
+            "role": "Developer"
         }
     ],
+    "support": {
+        "issues": "https://github.com/LEXASOFT/PHP-Censor-Telegram-Plugin/issues",
+        "source": "https://github.com/LEXASOFT/PHP-Censor-Telegram-Plugin"
+    },
     "require": {
         "php": ">=5.3.3"
     },
@@ -17,7 +34,7 @@
         }
     },
     "extra": {
-        "phpci": {
+        "php-censor": {
             "pluginNamespace": "PHPCensor\\Plugin\\",
             "suppliedPlugins": [
                 {
