@@ -4,11 +4,11 @@ namespace PHPCensor\Plugin;
 
 use PHPCensor\Builder;
 use PHPCensor\Model\Build;
-use b8\HttpClient;
+use GuzzleHttp\Client;
 
 /**
  * Telegram Plugin
- * 
+ *
  * @author     LEXASOFT <lexasoft83@gmail.com>
  * @package    PHPCensor
  * @subpackage Plugins
@@ -77,28 +77,36 @@ class Telegram extends \PHPCensor\Plugin
     {
         
         $message = $this->buildMessage();
-
-        $http = new HttpClient('https://api.telegram.org');
-        $http->setHeaders(['Content-Type: application/json']);
-        $uri = '/bot'. $this->apiKey . '/sendMessage';
+        $client  = new Client();
+        $url     = '/bot'. $this->apiKey . '/sendMessage';
 
         foreach ($this->recipients as $chatId) {
             $params = [
-                'chat_id' => $chatId,
-                'text' => $message,
+                'chat_id'    => $chatId,
+                'text'       => $message,
                 'parse_mode' => 'Markdown',
             ];
 
-            $http->post($uri, json_encode($params));
+            $client->post(('https://api.telegram.org' . $url), [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => $params,
+            ]);
 
             if ($this->sendLog) {
                 $params = [
-                    'chat_id' => $chatId,
-                    'text' => $this->buildMsg,
+                    'chat_id'    => $chatId,
+                    'text'       => $this->buildMsg,
                     'parse_mode' => 'Markdown',
                 ];
 
-                $http->post($uri, json_encode($params));
+                $client->post(('https://api.telegram.org' . $url), [
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                    ],
+                    'json' => $params,
+                ]);
             }
         }
 
@@ -112,13 +120,13 @@ class Telegram extends \PHPCensor\Plugin
     private function buildMessage()
     {
         $this->buildMsg = '';
-        $buildIcon = $this->build->isSuccessful() ? '✅' : '❎';
-        $buildLog = $this->build->getLog();
-        $buildLog = str_replace(['[0;32m', '[0;31m', '[0m', '/[0m'], '', $buildLog);
-        $buildMessages = explode('RUNNING PLUGIN: ', $buildLog);
+        $buildIcon      = $this->build->isSuccessful() ? '✅' : '❎';
+        $buildLog       = $this->build->getLog();
+        $buildLog       = str_replace(['[0;32m', '[0;31m', '[0m', '/[0m'], '', $buildLog);
+        $buildMessages  = explode('RUNNING PLUGIN: ', $buildLog);
 
         foreach ($buildMessages as $bm) {
-            $pos = mb_strpos($bm, "\n");
+            $pos      = mb_strpos($bm, "\n");
             $firstRow = mb_substr($bm, 0, $pos);
 
             //skip long outputs
