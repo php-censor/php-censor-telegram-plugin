@@ -26,7 +26,8 @@
         "source": "https://github.com/LEXASOFT/PHP-Censor-Telegram-Plugin"
     },
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "guzzlehttp/guzzle": "6.2.*"
     },
     "autoload": {
         "psr-4": {
