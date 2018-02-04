@@ -120,7 +120,7 @@ class Telegram extends \PHPCensor\Plugin
     private function buildMessage()
     {
         $this->buildMsg = '';
-        $buildIcon      = $this->build->isSuccessful() ? '✅' : '❎';
+        $buildIcon      = $this->build->isSuccessful() ? '✅' : '❌';
         $buildLog       = $this->build->getLog();
         $buildLog       = str_replace(['[0;32m', '[0;31m', '[0m', '/[0m'], '', $buildLog);
         $buildMessages  = explode('RUNNING PLUGIN: ', $buildLog);
